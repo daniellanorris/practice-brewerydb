@@ -1,0 +1,139 @@
+{{>header}}
+
+{{#if loggedIn}}
+    {{> header}}
+{{/if}}
+
+<main class="container">
+    <section class="row mb-5">
+        <h1>{{heading}}</h1>
+        <form id="login" class="rounded employees-bg_dark p-4" action="api/update-employee/{{user.id}}" method="POST">
+            <div class="input-group mb-3">
+                <label for="firstname" class="input-group-text employees-bg_light">first name: </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="firstname"
+                    name="firstname"
+                    placeholder="enter your first name"
+                    aria-label="firstname"
+                    aria-describedby="firstname"
+                    value="{{user.first_name}}"
+                    readonly
+                />
+            </div>
+            <div class="input-group mb-3">
+                <label for="lastname" class="input-group-text employees-bg_light">last name: </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="lastname"
+                    name="lastname"
+                    placeholder="enter your last name"
+                    aria-label="lastname"
+                    aria-describedby="lastname"
+                    value="{{user.last_name}}"
+                    readonly
+                />
+            </div>
+            <div class="input-group mb-3">
+                <label for="email" class="input-group-text
+                    employees-bg_light">email: </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="enter your email"
+                    aria-label="email"
+                    aria-describedby="email"
+                    value="{{user.email}}"
+                    />
+            </div>
+            <div class="input-group mb-3">
+                <label for="role" class="input-group-text employees-bg_light">role:
+                </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="role"
+                    name="role"
+                    placeholder="enter your email"
+                    aria-label="role"
+                    aria-describedby="role"
+                    value="{{user.role}}"
+                    readonly
+                    />
+            </div>
+            <div class="input-group mb-3">
+                <label for="username" class="input-group-text employees-bg_light">username: </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    name="username"
+                    placeholder="enter your username"
+                    aria-label="username"
+                    aria-describedby="username"
+                    value="{{user.username}}"
+                    readonly
+                />
+            </div>
+            <div class="input-group mb-3">
+                <label for="secret_question" class="input-group-text employees-bg_light">secret question:
+                </label>
+                <select name="secret_question" id="secret_question" class="form-select"
+                    aria-label="Select question">
+                    <option value="{{user.question_id}}" selected>{{user.question}}</option>
+                    {{#each question}}
+                    <option value="{{id}}">{{question}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <label for="secret_answer" class="input-group-text
+                    employees-bg_light">answer: </label>
+                <input
+                    type="password"
+                    class="form-control"
+                    id="secret_answer"
+                    name="secret_answer"
+                    placeholder="enter your new answer"
+                    aria-label="secret_answer"
+                    aria-describedby="secret_answer"
+                    value="{{user.security_answer}}"
+                    />
+            </div>
+            <div class="input-group mb-3">
+                <label for="password" class="input-group-text employees-bg_light">password: </label>
+                <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    placeholder="enter your new password"
+                    aria-label="password"
+                    aria-describedby="password"
+                    value="{{user.password}}"
+                />
+            </div>
+            <div class="input-group mb-3">
+                <label for="confirm_password" class="input-group-text employees-bg_light">confirm your password: </label>
+                <input
+                    type="password"
+                    class="form-control"
+                    id="confirm_password"
+                    name="confirm_password"
+                    placeholder="confirm your password"
+                    aria-label="confirm_password"
+                    aria-describedby="confirm_password"
+                    value="{{user.password}}"
+                />
+            </div>
+                
+            <div class="col-sm-12">
+                <button type="submit" class="btn employees-bg_light">Submit</button>
+            </div>
+        </form>
+    </section>
+</main>

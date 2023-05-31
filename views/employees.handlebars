@@ -1,0 +1,161 @@
+{{> header}}
+<main class="container">
+  
+    <section class="row mb-5">
+        <h1>{{heading}}</h1>
+        <form id="login" class="rounded employees-bg_dark p-4"
+            action="api/employees" method="POST">
+            <div class="input-group mb-3">
+                <label for="firstname" class="input-group-text
+                    employees-bg_light">first name: </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="firstname"
+                    name="firstname"
+                    placeholder="enter your first name"
+                    aria-label="firstname"
+                    aria-describedby="firstname"
+                    />
+            </div>
+            <div class="input-group mb-3">
+                <label for="lastname" class="input-group-text
+                    employees-bg_light">last name: </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="lastname"
+                    name="lastname"
+                    placeholder="enter your last name"
+                    aria-label="lastname"
+                    aria-describedby="lastname"
+                    />
+            </div>
+            <div class="input-group mb-3">
+                <label for="email" class="input-group-text
+                    employees-bg_light">email: </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="enter your email"
+                    aria-label="email"
+                    aria-describedby="email"
+                    />
+            </div>
+            <div class="input-group mb-3">
+                <label for="role" class="input-group-text employees-bg_light">role:
+                </label>
+                <select name="role" id="role" class="form-select"
+                    aria-label="Select role">
+                    <option selected>select role</option>
+                    {{#each role}}
+                    <option value="{{id}}">{{role}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <label for="username" class="input-group-text
+                    employees-bg_light">username: </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    name="username"
+                    placeholder="enter your username"
+                    aria-label="username"
+                    aria-describedby="username"
+                    />
+            </div>
+            <div class="input-group mb-3">
+                <label for="secret_question" class="input-group-text employees-bg_light">secret question:
+                </label>
+                <select name="secret_question" id="secret_question" class="form-select"
+                    aria-label="Select question">
+                    <option value="" selected>select question</option>
+                    {{#each question}}
+                    <option value="{{id}}">{{question}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <label for="secret_answer" class="input-group-text
+                    employees-bg_light">answer: </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="secret_answer"
+                    name="secret_answer"
+                    placeholder="enter your answer"
+                    aria-label="secret_answer"
+                    aria-describedby="secret_answer"
+                    />
+            </div>
+            {{!-- 
+                Password and Confirm Password can be text
+                inputs instead of password because we don't need
+                to hide this since management is creating a temp
+                password for the employee
+             --}}
+            <div class="input-group mb-3">
+                <label for="password" class="input-group-text
+                    employees-bg_light">password: </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    placeholder="enter your password"
+                    aria-label="password"
+                    aria-describedby="password"
+                    />
+            </div>
+            <div class="input-group mb-3">
+                <label for="confirm_password" class="input-group-text
+                    employees-bg_light">confirm your password: </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="confirm_password"
+                    name="confirm_password"
+                    placeholder="confirm your password"
+                    aria-label="confirm_password"
+                    aria-describedby="confirm_password"
+                    />
+            </div>
+
+            <div class="col-sm-12">
+                <button type="submit" class="btn employees-bg_light">submit</button>
+            </div>
+        </form>
+    </section>
+    <section class="row mb-5">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="employees-bg_dark">
+                    <tr>
+                        <th>first name</th>
+                        <th>last name</th>
+                        <th>email</th>
+                        <th>role</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each employee}}
+                    <tr>
+                        <td>{{first_name}}</td>
+                        <td>{{last_name}}</td>
+                        <td><a href="mailto:{{email}}">{{email}}</a></td>
+                        <td>{{role}}</td>
+                        <td>
+                            <button class="btn btn-sm rounded employees-bg_light emp-delete-btn" data-request-id="{{employee_id}}">delete</button>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
